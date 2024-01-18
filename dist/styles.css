@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Satisfy&display=swap');
+
+html {
+    margin: 10px;
+    background-color: #fcf6ff;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+body {
+    font-size: clamp(20px, 1.5vh, 3vh);
+}
+
+.header {
+    display: flex;
+    margin: 2vh 1vw 4vh 1vw;
+}
+
+.title {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: clamp(30px, 4vh, 6vh);
+    letter-spacing: 6px;
+}
+
+.lists {
+    margin: 0vh 1vw 4vh 1vw;
+    display: flex;
+    flex-flow: row wrap;
+    gap: clamp(10px, 1vw, 2vw);
+}
+
+.items {
+    margin: 0vh 1vw 4vh 1vw;
+    display: flex;
+    flex-flow: column nowrap;
+    flex-basis: auto;
+    gap: clamp(12px, 1.25vh, 2vh);
+}
+
+.list, .add-item-btn {
+    background-color: #C499F3;
+    color: white;
+    padding: clamp(10px, 0.5vw, 1vw);
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.list:hover {
+    background-color: #bc88f3;
+}
+
+.list:active {
+    background-color: #33186B;
+}
+
+.add-list-btn, .add-item-btn {
+    background-color: #7360df;
+    color: #fcf6ff;
+}
+
+.add-list-btn:hover,
+.add-item-btn:hover {
+    background-color: #6550db;
+}
+
+.add-list-btn:active,
+.add-item-btn:active {
+    background-color: #33186B;
+}
+
+.item {
+    background-color: #F8EDFF;
+    padding: clamp(10px, 0.5vw, 1vw);
+    border-radius: 20px;
+    cursor: pointer;
+    text-align: left;
+
+    display: flex;
+}
