@@ -17,6 +17,10 @@
     - Create list factory function
 */
 
+let defaultLists = [];
+let lists = localStorage.getItem('savedLists');
+    lists = JSON.parse(lists || JSON.stringify(defaultLists));
+
 const createListListeners = () => {
     
 }
@@ -28,4 +32,8 @@ const createList = (lists, name) => {
         name,
         taskList
     }
+};
+
+const getStorageData = () => {
+    
 };

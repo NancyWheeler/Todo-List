@@ -2,7 +2,7 @@
 
 :root {
     --border-radius: clamp(20px, 4vh, 5vh);
-    --margin-bottom: clamp(80px, 10vh, 12vh);
+    --margin-bottom: clamp(40px, 6vh, 8vh);
     --element-padding: clamp(10px, 0.5vw, 1vw);
 
     --color-page-bg: #fcf6ff;
@@ -25,6 +25,7 @@
 }
 
 html {
+    font-family: 'Noto Sans', sans-serif;
     margin: 10px;
     background-color: var(--color-pallet-1);
     align-items: center;
@@ -39,7 +40,6 @@ html {
 }
 
 .title {
-    font-family: 'Noto Sans', sans-serif;
     font-size: clamp(35px, 8vh, 10vh);
     letter-spacing: 6px;
 }
@@ -71,16 +71,16 @@ html {
     display: flex;
     flex-flow: column nowrap;
     flex-basis: auto;
-    align-items: left;
     justify-content: center;
     gap: clamp(12px, 1.25vh, 2vh);
+    padding-right: 40px;
 }
 
 .list-title {
     font-size: clamp(30px, 5vh, 8vh);
     align-self: center;
     text-align: center;
-    max-width: 37vw;
+    max-width: 80%;
     max-height: 20vh;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -98,17 +98,20 @@ html {
     cursor: pointer;
     max-width: clamp(12px, 1.25vh, 2vh);
     max-height: clamp(12px, 1.25vh, 2vh);
-    border: 1px solid var(--color-page-bg);
+    border: 1px solid;
 }
 
 .add-list-btn:hover,
-.add-item-btn:hover {
+.add-item-btn:hover,
+button:hover {
+    color: var(--color-text);
     background-color: var(--color-pallet-3);
     border: 1px solid var(--color-text);
 }
 
 .add-list-btn:active,
-.add-item-btn:active {
+.add-item-btn:active,
+button:active {
     color: var(--color-text);
     background-color: var(--color-button-active);
 }
@@ -138,7 +141,7 @@ html {
 
 .item {
     background-color: var(--color-pallet-2);
-    color: #3D3B40;
+    color: var(--color-text);
     padding: var(--element-padding);
     border-radius: var(--border-radius);
     cursor: pointer;
@@ -148,11 +151,32 @@ html {
     justify-content: center;
     align-items: center;
     max-height: 4vh; 
+    min-width: 350px;
 }
 
-.active {
+.selected {
     background-color: var(--color-pallet-4);
     color: var(--color-pallet-1);
+
+    display: flex;
+    gap: 1vw;
+    cursor: auto;
+}
+
+.icon-edit {
+    background-color: var(--color-pallet-1);
+    border: 1px solid;
+    border-radius: var(--border-radius);
+    padding: 0.5vh;
+    cursor: pointer;
+}
+
+.icon-check, .icon-expand {
+    opacity: 60%;
+}
+
+.item > * {
+    margin-right: 12px;
 }
 
 .item-prio {
@@ -162,7 +186,6 @@ html {
     max-width: 2vw;
     max-height: 2vw;
     margin-left: 12px;
-    margin-right: 12px;
     opacity: 30%;
     background-color: var(--color-prio-high);
     border-radius: 50%;
@@ -185,26 +208,83 @@ html {
     box-shadow: 0px 0px 28px 3px var(--color-prio-high);
 }
 
-.item-title {
-    font-size: clamp(18px, 2.5vh, 4vh);
-    margin-right: 12px;
+.item-title, .item-desc {
     max-width: 25vw;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
+.item-title {
+    font-size: clamp(18px, 2.5vh, 4vh);
+}
+
 .item-desc {
+    letter-spacing: 1px;
+    color: var(--color-pallet-4);
     font-size: clamp(16px, 1vh, 3vh);
-    margin-right: 12px;
-    max-width: 25vw;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
 }
 
 .item-date {
     font-size: clamp(14px, 1.5vh, 3.5vh);
     margin-right: 12px;
     margin-left: auto;
+}
+
+.complete, .complete .item-desc {
+    text-decoration: line-through;
+    color: var(--color-pallet-3);
+}
+
+#editItemForm {
+    background-color: var(--color-inactive);
+    color: var(--color-text);
+    padding: var(--element-padding);
+    border-radius: var(--border-radius);
+    font-size: clamp(18px, 2.5vh, 4vh);
+
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    display: grid;
+    grid-template: repeat(4, 1fr) / 25% 40%;
+    gap: 5px;
+}
+
+label {
+    justify-self: right;
+}
+
+input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    min-height: 10px;
+}
+
+button {
+    justify-self: right;
+    min-width: 60px;
+    max-width: 80px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--color-pallet-4);
+    color: var(--color-pallet-1);
+    cursor: pointer;
+}
+
+#editItemForm button:last-child {
+    background-color: var(--color-pallet-1);
+    color: var(--color-pallet-4);
+    justify-self: left;
+}
+
+.hidden {
+    top: 0;
+    left: 0;
+    pointer-events: none !important;
+    max-height: 0 !important;
+    opacity: 0;
 }
