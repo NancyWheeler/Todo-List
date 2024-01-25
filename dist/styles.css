@@ -101,9 +101,15 @@ html {
     border: 1px solid;
 }
 
+.add-item-btn {
+    margin-top: 4vh;
+    margin-bottom: 2vh;
+    align-self: center;
+}
+
 .add-list-btn:hover,
 .add-item-btn:hover,
-button:hover {
+.btn-saveItem:hover {
     color: var(--color-text);
     background-color: var(--color-pallet-3);
     border: 1px solid var(--color-text);
@@ -111,20 +117,15 @@ button:hover {
 
 .add-list-btn:active,
 .add-item-btn:active,
-button:active {
+.btn-saveItem:active,
+.btn-cancelItem:active {
     color: var(--color-text);
-    background-color: var(--color-button-active);
+    background-color: var(--color-button-active) !important;
 }
 
-.add-item-btn {
-    margin-top: 4vh;
-    margin-bottom: 2vh;
-    align-self: center;
-}
-
-.list {
+.list, #editListForm {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -247,7 +248,7 @@ button:active {
     align-items: center;
     align-content: center;
 
-    display: grid;
+    display: none;
     grid-template: repeat(4, 1fr) / 25% 40%;
     gap: 5px;
 }
@@ -275,10 +276,59 @@ button {
     cursor: pointer;
 }
 
-#editItemForm button:last-child {
+.btn-cancelItem, .btn-cancelList {
     background-color: var(--color-pallet-1);
     color: var(--color-pallet-4);
     justify-self: left;
+}
+
+.btn-cancelItem:hover, .btn-cancelList:hover {
+    background-color: var(--color-pallet-2);
+    color: var(--color-pallet-4);
+}
+
+#editListForm {
+    display: none;
+    gap: 2px;
+    padding: 10px;
+    background-color: var(--color-pallet-2);
+    min-width: 265px;
+}
+
+#editList-title {
+    margin: 2px;
+    max-width: 100px;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-radius: var(--border-radius);
+}
+
+#editListForm button {
+    display: flex;
+    margin: 2px;
+    padding: 0;
+    border-radius: var(--border-radius);
+    background-color: var(--color-pallet-3);
+    border: 1px solid var(--color-pallet-4);
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn-cancelList {
+    background-color: var(--color-pallet-1) !important;
+}
+
+.btn-cancelList:hover, .btn-saveList:hover {
+    background-color: var(--color-pallet-4) !important;
+} 
+
+.btn-cancelList:active, .btn-saveList:active {
+    background-color: var(--color-button-active) !important;
+}
+
+#editListForm img {
+    opacity: 100%;
 }
 
 .hidden {

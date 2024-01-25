@@ -17,7 +17,6 @@
         <div class="list selected">
           <div class="name">wasd</div>
           <img class="icon-edit" src="icons/edit.svg">
-          </svg>
         </div>
         <div class="list">yo</div>
         <div class="list">yo</div>
@@ -33,6 +32,15 @@
         <div class="list">yo</div>
         <div class="list">yo</div>
         <div class="list">yo</div>
+        <form id="editListForm">
+          <input type="text" name="listTitle" id="editList-title" maxlength="20">
+          <button type="submit" class="btn-saveList">
+            <img class="icon-check" src="icons/check.svg">
+          </button>
+          <button type="submit" class="btn-cancelList">
+            <img class="icon-close" src="icons/close.svg">
+          </button>
+        </form>
       </div>
     </div>
     <div class="main-content">
@@ -54,15 +62,15 @@
             <div class="item-date">26/01/2024</div>
             <img class="icon-expand" src="icons/expand.svg">
         </li>
-        <form id="editItemForm" class="hidden" autocomplete="off">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="editItem-title">
-          <label for="desc">Description</label>
-          <input type="text" name="desc" id="editItem-desc">
-          <label for="date">Due</label>
-          <input type="date" name="date" id="editItem-date">
-          <button type="submit">Save</button>
-          <button type="submit">Cancel</button>
+        <form id="editItemForm" class="" autocomplete="off">
+          <label for="itemTitle">Title</label>
+          <input type="text" name="itemTitle" id="editItem-title" maxlength="20">
+          <label for="itemDesc">Description</label>
+          <input type="text" name="itemDesc" id="editItem-desc" maxlength="20">
+          <label for="itemDate">Due</label>
+          <input type="date" name="itemDate" id="editItem-date">
+          <button type="submit" class="btn-saveItem">Save</button>
+          <button type="submit" class="btn-cancelItem">Cancel</button>
         </form>
       </ul>
     </div>
