@@ -3,7 +3,7 @@
 :root {
     --border-radius: clamp(20px, 4vh, 5vh);
     --margin-bottom: clamp(40px, 6vh, 8vh);
-    --element-padding: clamp(10px, 0.5vw, 1vw);
+    --element-padding: clamp(10px, 0.7vw, 1vw);
 
     --color-page-bg: #fcf6ff;
     --color-text: #3D3B40;
@@ -33,10 +33,13 @@ html {
     user-select: none;
 }
 
+body > * {
+    margin: 0vh 1vw 4vh 1vw;
+    margin-bottom: var(--margin-bottom);
+}
+
 .header {
     display: flex;
-    margin: 2vh 1vw 4vh 1vw;
-    margin-bottom: var(--margin-bottom);
 }
 
 .title {
@@ -53,18 +56,8 @@ html {
     text-align: center;
 }
 
-.list-nav {
-    margin: 0vh 1vw 4vh 1vw;
-    margin-bottom: var(--margin-bottom);
-}
-
 .lists {
     flex-wrap: wrap;
-}
-
-.main-content {
-    margin: 0vh 1vw 4vh 1vw;
-    margin-bottom: var(--margin-bottom);
 }
 
 .main-content, .items {
@@ -73,7 +66,7 @@ html {
     flex-basis: auto;
     justify-content: center;
     gap: clamp(12px, 1.25vh, 2vh);
-    padding-right: 40px;
+    padding: 0;
 }
 
 .list-title {
@@ -134,7 +127,6 @@ html {
     padding: var(--element-padding);
     border-radius: var(--border-radius);
     cursor: pointer;
-    max-width: 40vw;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -165,6 +157,7 @@ html {
 }
 
 .icon-edit {
+    display: none;
     background-color: var(--color-pallet-1);
     border: 1px solid;
     border-radius: var(--border-radius);
@@ -172,7 +165,7 @@ html {
     cursor: pointer;
 }
 
-.icon-check, .icon-expand {
+.item .img {
     opacity: 60%;
 }
 
@@ -248,20 +241,34 @@ html {
     align-items: center;
     align-content: center;
 
-    display: none;
-    grid-template: repeat(4, 1fr) / 25% 40%;
-    gap: 5px;
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+}
+
+.form-section {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#editItemForm input, select {
+    max-width: clamp(230px, 20vw, 22vw);
+    min-width: 130px;
 }
 
 label {
-    justify-self: right;
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    font-size: clamp(16px, 1vh, 3vh);
 }
 
-input {
+input, select {
+    display: inline-block;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
-    min-height: 10px;
 }
 
 button {
@@ -288,11 +295,11 @@ button {
 }
 
 #editListForm {
-    display: none;
+    display: flex;
     gap: 2px;
-    padding: 10px;
     background-color: var(--color-pallet-2);
     min-width: 265px;
+    padding: 5px 3px;
 }
 
 #editList-title {
@@ -300,13 +307,12 @@ button {
     max-width: 100px;
     padding: 8px 10px;
     border: 1px solid;
-    border-radius: var(--border-radius);
 }
 
-#editListForm button {
+.btn-saveList, .btn-cancelList {
     display: flex;
     margin: 2px;
-    padding: 0;
+    padding: 4px 10px;
     border-radius: var(--border-radius);
     background-color: var(--color-pallet-3);
     border: 1px solid var(--color-pallet-4);
@@ -325,16 +331,4 @@ button {
 
 .btn-cancelList:active, .btn-saveList:active {
     background-color: var(--color-button-active) !important;
-}
-
-#editListForm img {
-    opacity: 100%;
-}
-
-.hidden {
-    top: 0;
-    left: 0;
-    pointer-events: none !important;
-    max-height: 0 !important;
-    opacity: 0;
 }

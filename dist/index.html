@@ -14,63 +14,103 @@
     <div class="list-nav">
       <div class="add-list-btn">+</div>
       <div class="lists">
-        <div class="list selected">
-          <div class="name">wasd</div>
-          <img class="icon-edit" src="icons/edit.svg">
+        <div class="list" data-list-id="0">
+          <div class="list-name">sadasdad</div>
+          <img class="icon-edit" src="icons/edit.svg" />
         </div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yodw dwd sd sd adsa asd</div>
-        <div class="list">ydsdsdso</div>
-        <div class="list">yo</div>
-        <div class="list">yssssssssso</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
-        <div class="list">yo</div>
+        <div class="list" data-list-id="1">
+          <div class="list-name">wasd</div>
+          <img class="icon-edit" src="icons/edit.svg" />
+        </div>
+        <div class="list" data-list-id="2">
+          <div class="list-name">dsds</div>
+          <img class="icon-edit" src="icons/edit.svg" />
+        </div>
+        <div class="list" data-list-id="3">
+          <div class="list-name">ffff</div>
+          <img class="icon-edit" src="icons/edit.svg" />
+        </div>
+        <div class="list" data-list-id="4">
+          <div class="list-name">ggg</div>
+          <img class="icon-edit" src="icons/edit.svg" />
+        </div>
         <form id="editListForm">
-          <input type="text" name="listTitle" id="editList-title" maxlength="20">
-          <button type="submit" class="btn-saveList">
-            <img class="icon-check" src="icons/check.svg">
-          </button>
-          <button type="submit" class="btn-cancelList">
-            <img class="icon-close" src="icons/close.svg">
-          </button>
+          <input
+            type="text"
+            name="listTitle"
+            id="editList-title"
+            maxlength="20"
+            autocomplete="off"
+          />
+          <input
+            type="image"
+            class="btn-saveList icon-check"
+            value="Add"
+            src="icons/check.svg"
+          />
+          <input
+            type="image"
+            class="btn-cancelList icon-close"
+            value="Cancel"
+            src="icons/close.svg"
+          />
         </form>
       </div>
     </div>
     <div class="main-content">
-        <div class="list-title">Groceries List</div>
+      <div class="list-title">Groceries List</div>
       <div class="add-item-btn">+</div>
       <ul class="items">
         <li class="item complete">
           <div class="item-prio prio-low"></div>
           <div class="item-title">blah</div>
           <div class="item-desc">blah blah blahsadadsa</div>
-          <img class="icon-check" src="icons/check.svg">
+          <img class="icon-check" src="icons/check.svg" />
           <div class="item-date">26/01/2024</div>
-          <img class="icon-expand" src="icons/expand.svg">
+          <img class="icon-expand" src="icons/expand.svg" />
         </li>
         <li class="item">
-            <div class="item-prio prio-high"></div>
-            <div class="item-title">blah</div>
-            <div class="item-desc">blah blah blahsadadsa</div>
-            <div class="item-date">26/01/2024</div>
-            <img class="icon-expand" src="icons/expand.svg">
+          <div class="item-prio prio-high"></div>
+          <div class="item-title">blah</div>
+          <div class="item-desc">blah blah blahsadadsa</div>
+          <div class="item-date">26/01/2024</div>
+          <img class="icon-expand" src="icons/expand.svg" />
         </li>
-        <form id="editItemForm" class="" autocomplete="off">
-          <label for="itemTitle">Title</label>
-          <input type="text" name="itemTitle" id="editItem-title" maxlength="20">
-          <label for="itemDesc">Description</label>
-          <input type="text" name="itemDesc" id="editItem-desc" maxlength="20">
-          <label for="itemDate">Due</label>
-          <input type="date" name="itemDate" id="editItem-date">
-          <button type="submit" class="btn-saveItem">Save</button>
-          <button type="submit" class="btn-cancelItem">Cancel</button>
+        <form id="editItemForm" autocomplete="off">
+          <div class="form-section">
+            <label for="itemTitle">Title</label>
+            <input
+              type="text"
+              name="itemTitle"
+              id="editItem-title"
+              maxlength="20"
+            />
+          </div>
+          <div class="form-section">
+            <label for="itemDesc">Description</label>
+            <input
+              type="text"
+              name="itemDesc"
+              id="editItem-desc"
+              maxlength="20"
+            />
+          </div>
+          <div class="form-section">
+            <label for="itemDate">Due</label>
+            <input type="date" name="itemDate" id="editItem-date" />
+          </div>
+          <div class="form-section">
+            <label for="prio">Priority</label>
+            <select id="prio" name="prio">
+              <option value="prio-low" selected>Low</option>
+              <option value="prio-med">Medium</option>
+              <option value="prio-high">High</option>
+            </select>
+          </div>
+          <div class="btn-section">
+            <button type="submit" class="btn-saveItem">Save</button>
+            <button type="submit" class="btn-cancelItem">Cancel</button>
+          </div>
         </form>
       </ul>
     </div>

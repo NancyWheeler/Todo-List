@@ -1,13 +1,13 @@
 // Create an example instance of the application
 import { lists } from './createList.js';
-import { addTodo } from './createTodo.js';
-import {  } from './editTodo.js';
+// import { addTodo } from './createTodo.js';
+// import {  } from './editTodo.js';
 
-// const initialLoad = () => {
-//     lists = addList(lists, "Groceries");
-//     addTodo(lists[0].list, "eggs", "large", "22/1/24", "0", "0");
-//     console.log(lists);
-// };
+const initialLoad = () => {
+    const firstList = document.querySelector('.list');
+    firstList.classList.add('selected');
+    firstList.querySelector('.icon-edit').style.display = 'flex';
+};
 
 function clearUI() {
     const content = document.querySelector('ul');
@@ -23,4 +23,4 @@ function displayTasks() {
     });
 };
 
-export default { displayTasks };
+export { initialLoad, clearUI, displayTasks };

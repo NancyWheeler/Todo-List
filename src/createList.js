@@ -1,3 +1,5 @@
+import { id } from './createTodo.js';
+
 /*
     - retrieve lists from storage else create placeholder data
     - Event listener for:
@@ -33,60 +35,70 @@ const createListListeners = () => {
 
     // Event listener to submit list form
     const submitList = document.querySelector('.btn-saveList');
-    submitList.addEventListener('submit', processInput);
+    submitList.addEventListener('click', processInput);
 
     // Check if list is selected
-    const selectList = document.querySelector('.lists');
-    selectList.addEventListener('click', selectList);
+    const listSelected = document.querySelector('.lists');
+    listSelected.addEventListener('click', selectList);
 
     displayLists();
 }
 
 // Default constructor for List
-const createList = (lists, name) => {
+const CreateList = (listId, name) => {
     const taskList = [];
+    const taskNum = taskList.length;
     return {
-        lists,
+        listId,
         name,
-        taskList
+        taskList,
+        taskNum
     }
 };
 
 // Toggle displaying the form
 const ToggleForm = () => {
-    const form = document.querySelector('#editItemForm');
-    if (form.style.display === 'none') {
-        form.style.display('grid');
-        document.getElementById('editList-title').focus;
+    const form = document.getElementById('editListForm');
+    if (form.style.display === 'none' || form.style.display === '') {
+        form.style.display = 'flex';
     } else {
-        document.querySelector('').value = '';
-        document.querySelector('').value = '';
-        document.querySelector('').value = '';
-        document.querySelector('').value = '';
-        form.style.display('none');
+        document.getElementById('editList-title').value = '';
+        form.style.display = 'none';
     }
 };
 
 // Handle processing form data & adding new list
 const processInput = (e) => {
-    let listTitle = document.querySelector('listTitle').value;
-    const newList = createList(lists, listTitle);
+    let listTitle = document.getElementById('editList-title').value;
+    let listID = document.querySelectorAll('[data-list-id]').length;
+    const newList = CreateList(listID, listTitle);
 
     lists.push(newList);
-    addList(listTitle);
+    // saveToStorage();
+
+    addList(listID, listTitle);
+    ToggleForm();
+
+    // let newItem = document.querySelectorAll('.list');
+    // selectList(newItem[newItem.length - 1]);
+
+    e.preventDefault();
 };
 
 function saveToStorage() {
     localStorage.setItem('savedLists', JSON.stringify(lists));
+    localStorage.setItem('id', id.toString());
 };
 
-const addList = (listName) => {
-    // const listsDiv = document.querySelector('#lists');
+// DOM manipulation
+const addList = (listId, listName) => {
+    const listsNav = document.querySelector('.lists');
     const newList = document.createElement('div');
     newList.classList.add('list');
+    newList.setAttribute('data-list-id', listId);
 
     const title = document.createElement('div');
-    title.classList.add('name');
+    title.classList.add('list-name');
     title.textContent = listName;
     newList.appendChild(title);
 
@@ -95,17 +107,42 @@ const addList = (listName) => {
     editBtn.src = 'icons/edit.svg';
     newList.appendChild(editBtn);
 
-    newList.insertAfter('.list');
+    listsNav.insertBefore(newList, listsNav.lastElementChild);
 };
 
+// display all lists
 const displayLists = () => {
     lists.forEach(list => {
         addList(list.name);
     });
 };
 
+// Handle selection of list
 const selectList = (e) => {
-    let selectedList = e.target.closest('.list');
+    let selectedList = e.target.closest('.lists .list');
+    console.log(e);
+    console.log(selectedList);
+    if (selectedList != null) {
+        const listTitle = selectedList.querySelector('.list-name');
+        let listItem = selectedList.dataset.list;
+
+        toggleSelected(selectedList);
+        // displayTodos(listItem);
+        // updateTitle(listTitle);
+    } else {
+        return;
+    }
 };
 
-export default { lists, createListListeners };
+// Apply CSS to selected list
+const toggleSelected = (node) => {
+    const selectedList = document.querySelector('.selected');
+    const selectedListEdit = document.querySelector('.selected .icon-edit');
+    selectedList.classList.remove('selected');
+    selectedListEdit.style.display = 'none';
+
+    node.classList.add('selected');
+    node.querySelector('.icon-edit').style.display = 'flex';
+};
+
+export { lists, createListListeners, saveToStorage };
